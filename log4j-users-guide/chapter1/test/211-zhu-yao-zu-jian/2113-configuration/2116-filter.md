@@ -1,0 +1,6 @@
+# 2.1.1.6 Filter
+
+除了上一节中描述的自动日志级别过滤之外，Log4j还提供了在控制传递给任何LoggerConfig之前可以应用的过滤器，在控制传递给LoggerConfig之后但在调用任何Appender之前，在控制传递到一个LoggerConfig之后，但在调用特定的Appender之前，以及每个Appender。 以一种与防火墙过滤器非常相似的方式，每个过滤器可以返回三个结果中的一个，即Accept（接受），Deny（拒绝）或Neutral（中立）。 Accept的响应意味着不应该调用其他筛选器，事件应该继续。Deny的响应意味着应该立即忽略事件，并将控制权返回给调用方。Neutral的响应表示事件应该传递给其他过滤器。如果没有其他过滤器，事件将被处理。
+
+当事件被前置LoggerConfig过滤器接受但是被后面LoggerConfig过滤器拒绝或被所有Appender拒绝时，可能会发生虽然事件可能被Filter接受，但事件仍然可能没有被记录的情况。
+
